@@ -34,3 +34,6 @@ class TestChange(unittest.TestCase):
     def test10(self):
         self.assertEqual(main.convert(1_111_111), 'Один миллион сто одиннадцать тысяч сто одиннадцать')
 
+    def test11(self):
+        self.assertEqual(main.convert(999999), 'Девятьсот девяносто девять тысяч девятьсот девяносто девять')
+

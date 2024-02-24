@@ -20,7 +20,7 @@ class Circle:
 
 def is_inside(circle1, circle2):
     distance = math.sqrt((circle1.x1 - circle2.x1) ** 2 + (circle1.y1 - circle2.y1) ** 2)
-    return distance + circle2.radius <= circle1.radius
+    return distance + circle2.radius <= circle1.radius + 1
 
 
 def find_maximum_circle(circles):
@@ -35,18 +35,23 @@ def find_maximum_circle(circles):
 
 
 def test_function():
-    with open('input3.txt', 'r') as f:
-        m = []
-        for line in f:
-            vertices = [int(i) for i in line.strip().split()]
-            m.append(vertices)
-        print(m)
-        circles = [Circle(m[i][0], m[i][1], m[i][2], m[i][3]) for i in range(0, len(m))]
+    tr = ['input31.txt', 'input32.txt', 'input33.txt', 'input34.txt', 'input35.txt']
+    to = ['output31.txt', 'output32.txt', 'output33.txt', 'output34.txt', 'output35.txt']
+    for t in range(5):
+        with open(tr[t], 'r') as f:
+            m = []
+            for line in f:
+                vertices = [int(i) for i in line.strip().split()]
+                m.append(vertices)
+            print(m)
+            circles = [Circle(m[i][0], m[i][1], m[i][2], m[i][3]) for i in range(0, len(m))]
+            for i in range(0, len(m)):
+                print(m[i][0], m[i][1], m[i][2], m[i][3])
 
-    max_circle = find_maximum_circle(circles)
-    answer = [max_circle.x1, max_circle.y1, max_circle.x2, max_circle.y2]
-    with open('output3.txt', 'w') as f:
-        f.write(" ".join(map(str, answer)))
+        max_circle = find_maximum_circle(circles)
+        answer = [max_circle.x1, max_circle.y1, max_circle.x2, max_circle.y2]
+        with open(to[t], 'w') as f:
+            f.write(" ".join(map(str, answer)))
 
 
 test_function()
